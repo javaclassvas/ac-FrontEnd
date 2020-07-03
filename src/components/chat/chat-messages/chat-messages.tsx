@@ -42,15 +42,14 @@ const ChatMessages = ({ data }: TMessagesWindowProps): React.ReactElement => {
 
   const [messages, setMessages] = useState<TMessage[]>(data);
 
-  const handleNewMessage = useCallback(
-    (msg: string, data: TMessage) => setMessages(messages.concat([data])),
-    [messages, setMessages]
-  );
 
   useEffect(() => {
-    PubSub.subscribe(NEW_MESSAGE_EVENT, handleNewMessage);
+    PubSub.subscribe(NEW_MESSAGE_EVENT, (msg: string, data: TMessage) =>
+      setMessages(messages.concat([data]))
+    );
     return () => PubSub.unsubscribe(NEW_MESSAGE_EVENT);
-  }, [handleNewMessage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const sendMessage = useCallback(
     async (text: string): Promise<TMessage> =>
