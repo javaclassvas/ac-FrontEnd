@@ -1,0 +1,30 @@
+@import "~bootstrap/scss/bootstrap";
+
+.text {
+
+}
+
+.date {
+  color: $gray-400;
+}
+
+.message {
+  margin: 8px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  width: 100%;
+  &.isUser {
+    .messageInner {
+      background: $secondary;
+      color: $white;
+    }
+  }
+}
+
+.messageInner {
+  padding: 10px;
+  border-radius: 5px;
+  background: $gray-100;
+  max-width: 30%;
+}

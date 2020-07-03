@@ -1,0 +1,17 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+.container {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+}
+
+.name {
+  color: $dark;
+  font-size: $font-size-base;
+  &.big {
+    font-size: $font-size-lg;
+  }
+}

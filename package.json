@@ -1,0 +1,73 @@
+{
+  "name": "anyclip-front",
+  "version": "0.1.0",
+  "author": "Vasily Alexeev",
+  "private": true,
+  "dependencies": {
+    "@types/classnames": "^2.2.9",
+    "@types/lodash-es": "^4.17.3",
+    "@types/node": "^12.12.22",
+    "@types/pubsub-js": "^1.8.0",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/socket.io-client": "^1.4.33",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
+    "classnames": "^2.2.6",
+    "core-js": "^3.6.4",
+    "dotenv": "^8.2.0",
+    "http-proxy-middleware": "^1.0.4",
+    "lodash-es": "^4.17.15",
+    "moment": "^2.27.0",
+    "node-sass": "^4.13.0",
+    "pubsub-js": "^1.8.0",
+    "react": "^16.12.0",
+    "react-async": "^10.0.1",
+    "react-bootstrap": "^1.0.1",
+    "react-dev-utils": "^10.0.0",
+    "react-dom": "^16.12.0",
+    "react-feather": "^2.0.8",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "regenerator-runtime": "^0.13.3",
+    "socket.io-client": "^2.3.0",
+    "typescript": "^3.9.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "start:prod": "NODE_ENV=production react-scripts start",
+    "build": "react-scripts build",
+    "test:unit": "react-scripts test",
+    "test:lint": "eslint --ext .ts --ext .tsx .",
+    "test:lint:fix": "npm run test:lint -- --fix"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "Chrome >= 30",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      ">0.2%",
+      "Chrome >= 30",
+      "not dead",
+      "not op_mini all"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^2.13.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.17.0",
+    "prettier": "^1.19.1"
+  }
+}
