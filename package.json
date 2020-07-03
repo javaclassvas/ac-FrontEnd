@@ -1,6 +1,7 @@
 {
   "name": "anyclip-front",
   "version": "0.1.0",
+  "author": "Vasily Alexeev",
   "private": true,
   "dependencies": {
     "@types/classnames": "^2.2.9",
