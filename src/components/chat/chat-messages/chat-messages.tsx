@@ -49,7 +49,7 @@ const ChatMessages = ({ data }: TMessagesWindowProps): React.ReactElement => {
 
   useEffect(() => {
     PubSub.unsubscribe(NEW_MESSAGE_EVENT);
-    const token = PubSub.subscribe(NEW_MESSAGE_EVENT, (msg: string, data: TMessage) => handleNewMessage(msg, data));
+    const token = PubSub.subscribe(NEW_MESSAGE_EVENT, handleNewMessage);
     return () => PubSub.unsubscribe(token);
   }, [handleNewMessage]);
 
