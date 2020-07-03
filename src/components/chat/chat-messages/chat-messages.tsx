@@ -42,10 +42,10 @@ const ChatMessages = ({ data }: TMessagesWindowProps): React.ReactElement => {
 
   const [messages, setMessages] = useState<TMessage[]>(data);
 
-  const handleNewMessage =
-    (msg: string, data: TMessage) => setMessages(messages.concat([data]));
-
-
+  const handleNewMessage = useCallback(
+    (msg: string, data: TMessage) => setMessages(messages.concat([data])),
+    [messages, setMessages]
+  );
 
   useEffect(() => {
     const token = PubSub.subscribe(NEW_MESSAGE_EVENT, handleNewMessage);
