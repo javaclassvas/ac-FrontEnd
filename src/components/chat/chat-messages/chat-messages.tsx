@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, {useCallback, useContext, useEffect, useRef, useState} from "react";
 import { withAsync } from "components/async/with-async";
 import * as chatApi from "api/chat";
 import {
@@ -10,11 +10,11 @@ import { TAsyncResult } from "types/async";
 import { TUser } from "types/user";
 import { TMessage } from "types/chat";
 import { sortBy } from "lodash-es";
-import PubSub from "pubsub-js";
 import {
   Message,
   UserMessage
 } from "components/chat/chat-message/chat-message";
+import socket from "../../../app/websockets";
 
 type TMessagesWindowProps = TAsyncResult<TMessage[]>;
 
@@ -43,12 +43,22 @@ const ChatMessages = ({ data }: TMessagesWindowProps): React.ReactElement => {
   const [messages, setMessages] = useState<TMessage[]>(data);
 
 
+  const handleNewMessage = useCallback(
+    (data: TMessage) => setMessages(messages.concat([data])),
+    [messages, setMessages]
+  );
+
+  const ref = useRef(handleNewMessage);
+
   useEffect(() => {
-    PubSub.subscribe(NEW_MESSAGE_EVENT, (msg: string, data: TMessage) =>
-      setMessages(messages.concat([data]))
-    );
-    return () => PubSub.unsubscribe(NEW_MESSAGE_EVENT);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    ref.current = handleNewMessage;
+  }, [handleNewMessage]);
+
+  useEffect(() => {
+    socket.on(NEW_MESSAGE_EVENT, (data: TMessage) => ref.current(data));
+    return () => {
+      socket.off(NEW_MESSAGE_EVENT);
+    };
   }, []);
 
   const sendMessage = useCallback(

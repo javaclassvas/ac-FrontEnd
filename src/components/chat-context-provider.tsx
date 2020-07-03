@@ -1,9 +1,6 @@
 import React, { createContext } from "react";
 import * as userApi from "api/user";
 import { TUser } from "types/user";
-import socket from "app/websockets";
-import { TMessage } from "types/chat";
-import PubSub from "pubsub-js";
 import {useStateWithLocalStorage} from "hooks";
 
 type TChatContext = {
@@ -28,10 +25,6 @@ export const ChatContextProvider: React.FC = ({
 
   const logout = () => setUser(undefined);
 
-  socket.on(NEW_MESSAGE_EVENT, (data: TMessage) => {
-    console.log(data);
-    PubSub.publish(NEW_MESSAGE_EVENT, data);
-  });
 
   const value: TChatContext = {
     user,
