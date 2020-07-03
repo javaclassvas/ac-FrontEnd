@@ -1,7 +1,6 @@
 {
   "name": "anyclip-front",
   "version": "0.1.0",
-  "author": "Vasily Alexeev",
   "private": true,
   "dependencies": {
     "@types/classnames": "^2.2.9",
@@ -34,9 +33,12 @@
     "socket.io-client": "^2.3.0",
     "typescript": "^3.9.2"
   },
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "start": "react-scripts start",
-    "start:prod": "NODE_ENV=production react-scripts start",
+    "start:stage": "NODE_ENV=stage react-scripts start",
     "build": "react-scripts build",
     "test:unit": "react-scripts test",
     "test:lint": "eslint --ext .ts --ext .tsx .",
