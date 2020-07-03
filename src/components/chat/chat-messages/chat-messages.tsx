@@ -50,7 +50,7 @@ const ChatMessages = ({ data }: TMessagesWindowProps): React.ReactElement => {
   useEffect(() => {
     const token = PubSub.subscribe(NEW_MESSAGE_EVENT, handleNewMessage);
     return () => PubSub.unsubscribe(token);
-  }, [handleNewMessage]);
+  }, []);
 
   const sendMessage = useCallback(
     async (text: string): Promise<TMessage> =>
