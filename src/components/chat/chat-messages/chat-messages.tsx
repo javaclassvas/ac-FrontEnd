@@ -48,9 +48,10 @@ const ChatMessages = ({ data }: TMessagesWindowProps): React.ReactElement => {
   );
 
   useEffect(() => {
-    const token = PubSub.subscribe(NEW_MESSAGE_EVENT, handleNewMessage);
+    PubSub.unsubscribe(NEW_MESSAGE_EVENT);
+    const token = PubSub.subscribe(NEW_MESSAGE_EVENT, (msg: string, data: TMessage) => handleNewMessage(msg, data));
     return () => PubSub.unsubscribe(token);
-  }, []);
+  }, [handleNewMessage]);
 
   const sendMessage = useCallback(
     async (text: string): Promise<TMessage> =>
