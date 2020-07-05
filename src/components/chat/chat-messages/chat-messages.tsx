@@ -67,6 +67,17 @@ const ChatMessages = ({ data }: TMessagesWindowProps): React.ReactElement => {
     [userId]
   );
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if(!containerRef.current){
+      return;
+    }
+    containerRef.current.scrollTop = containerRef.current.scrollHeight;
+  },[messages]);
+
+
+
   return (
     <div className="w-100 h-100 d-flex flex-column">
       <MessagesList messages={messages} />
